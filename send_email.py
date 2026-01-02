@@ -3,7 +3,7 @@ import ssl
 import os
 from email.message import EmailMessage
 
-def send_email(message: str):
+def send_email(message: str, subject: str):
     username = "appworld704@gmail.com"
     password = "tvesfuyonlniuuxr"
     receiver = "appworld704@gmail.com"
@@ -14,7 +14,7 @@ def send_email(message: str):
     msg = EmailMessage()
     msg["From"] = username
     msg["To"] = receiver
-    msg["Subject"] = "Tesla News Update"
+    msg["Subject"] = "Today's News"
     msg.set_content(message)
 
     context = ssl.create_default_context()
@@ -22,3 +22,5 @@ def send_email(message: str):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
         server.login(username, password)
         server.send_message(msg)
+
+
